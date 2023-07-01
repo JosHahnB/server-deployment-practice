@@ -9,9 +9,9 @@ const express = require('express');
 // const PORT = process.env.PORT
 
 const server = express();
-const pageNotFoundHandler = require('./routeErrorHandlers/404');
-const errorHandler = require('./routeErrorHandlers/500')
-const stamper = require('./middleware/stamper');
+const pageNotFoundHandler = require('./routeErrorHandlers/404.js');
+const errorHandler = require('./routeErrorHandlers/500.js')
+const stamper = require('./middleware/stamper.js');
 
 // error handler function
 // const pageNotFoundHandler = (req, res) => {
@@ -41,11 +41,11 @@ const stamper = require('./middleware/stamper');
 // }
 
 // hello
-server.get('/', stamper, (_, res) => res.send(`Hello! ${req.timestamp}`));
+server.get('/hello', stamper, (req, res) => res.send(`hello ${req.timestamp}`));
 // goodbye
-server.get('/', (_, res) => res.send('Goodbye!'));
+server.get('/goodbye', (_, res) => res.send('goodbye'));
 
-server.get('/bad', (_, res, next) => next('this is a bad route'))
+server.get('/bad', (req, res, next) => next({ message: 'this is a bad route' }))
 // callaback function that is the second argument to an express route can take a third argument called next => passes info to the next process that occurs
 
 
