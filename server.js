@@ -2,60 +2,62 @@
 
 // express is the library we import for the server methods and code
 const express = require('express');
-// dotenv allows us to read from .env file
-// const { config } = require('dontenv');
-// config();
-
-// const PORT = process.env.PORT
-
 const server = express();
-const pageNotFoundHandler = require('./routeErrorHandlers/404.js');
-const errorHandler = require('./routeErrorHandlers/500.js')
-const stamper = require('./middleware/stamper.js');
+const logger = require('./middleware/logger.js');
+const getBrowser = reqire('./middleware/getBrowser.js')
+const handle500 = require('./errorHandling/500.js');
 
-// error handler function
-// const pageNotFoundHandler = (req, res) => {
-//   res.status(404).send({
-//     error: 404,
-//     route: req.path,
-//     message: 'no data on this route'
-//   })
-// }
+// start function used by index
+function start(port) {
+  server.listen(port, () => console.log(`I can hear you on port ${port}`));
+}
 
-// 500 error handler
-// const errorHandler = (error, req, res, next) => {
-//   res.status(500).send({
-//     error: 500,
-//     route: req.path,
-//     query: req.query,
-//     body: req.body,
-//     message: 'Server Error: ${error}'
-//   })
-// };
+// errors
+function handle404(req, res, next) {
+  const errorObject = {
+    status: 404,
+    message: 'Sorry, we are unable to find what you are looking for'
+  };
+  res.status(404).json(errorObject);
+}
 
-// middleware 
-// middle wear does something with the request that comes in before sending back the response
-// const stamper = (req, res, next) => {
-//   req.timestamp = new Date();
-//   next();
-// }
+// if we want the mw applied to every route we put it on top
+server.use(logger);
 
-// hello
-server.get('/hello', stamper, (req, res) => res.send(`hello ${req.timestamp}`));
-// goodbye
-server.get('/goodbye', (_, res) => res.send('goodbye'));
+// GLOBAL Express middleware
+server.use(express.json());
 
-server.get('/bad', (req, res, next) => next({ message: 'this is a bad route' }))
-// callaback function that is the second argument to an express route can take a third argument called next => passes info to the next process that occurs
+// route tester
+server.get('/', (req, res) => res.send('Hello World!'));
+
+// taking in a query string
+server.get('/hello', (req, res) => {
+  if (!req.query.name) {
+    throw new Error('Wrong! Please tell me your name');
+  }
+  res.send(`Hello, ${req.query.name}`);
+});
+
+// req.param a key-value pair where the key is defined by our route
+server.get('/hello/:person', (req, res) => {
+  // error handling?
+  res.send(`Hello, ${req.params.person}`)
+});
+
+// add on to the req.body with a post request
+server.post('/hello', (req, res) => {
+  //req.body - JSON Object {"key": "value"}
+  res.send(`Hello, ${req.body.name}`)
+});
+
+//aply middleware to only one route
+server.get('/demo', getBrowser, (req, res) => {
+  res.send(`You are using ${req.browser}`);
+});
 
 
-// invalid routes
-// can do this two ways
-// ser.get(/)
-server.use('*', pageNotFoundHandler);
-server.use(errorHandler);
+server.use('*', handle404);
+server.use(handle500);
 
 
-// server.listen(PORT, () => console.log("I am alive on port " , PORT));
-
-module.exports = server;
+module.exports = { server, start };
