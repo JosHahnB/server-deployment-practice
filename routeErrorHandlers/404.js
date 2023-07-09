@@ -1,11 +1,12 @@
 'use strict'
 
-const pageNotFoundHandler = (req, res) => {
-  res.status(404).send({
-    error: 404,
-    route: req.path,
-    message: 'no data on this route'
-  })
-};
+function handle404(req, res, next) {
+  const errorObject = {
+    status: 404,
+    message: 'Sorry, we could not find what you were looking for',
+  };
 
-module.exports = pageNotFoundHandler;
+  res.status(404).json(errorObject);
+}
+
+module.exports = handle404;
