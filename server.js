@@ -7,7 +7,7 @@ const handle500 = require('./routeErrorHandlers/500.js');
 const handle404 = require('./routeErrorHandlers/404.js');
 const peopleRoutes = require('./routes/people.route.js');
 const coldRoutes = require('./routes/cold.route.js');
-// const { Col } = require('sequelize/types/utils.js');
+const hotRoutes = require('./routes/hot.route.js');
 
 // start function that will be used by index
 function start(port) {
@@ -25,6 +25,7 @@ server.get('/', (req, res) => res.send('Hello World'));
 
 server.use(peopleRoutes);
 server.use(coldRoutes);
+server.use(hotRoutes)
 
 server.use('*', handle404);
 server.use(handle500);
