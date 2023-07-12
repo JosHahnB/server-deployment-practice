@@ -11,11 +11,11 @@ const { Cold } = require('../models/index.js');
 const router = express.Router();
 
 // RESTful route declarations
-// router.get('/cold', getcold); //get all records from pepole table
+router.get('/cold', getCold); //get all records from pepole table
 router.get('/cold/:id', getOneCold);
 router.post('/cold', createCold);
-router.put('cold:id', updateCold);
-router.delete('cold:id', deleteCold);
+router.put('/cold/:id', updateCold);
+router.delete('/cold/:id', deleteCold);
 
 // routehandlers -- all are async because database
 async function getCold(req, res) {
@@ -30,7 +30,7 @@ async function getOneCold(req, res) {
   res.status(200).json(retrievedCold)
 }
 
-async function createPerson(req, res) {
+async function createCold(req, res) {
   let newCold = req.body;
   let savedCold = await Cold.create(newCold);
   res.status(200).json(savedCold)

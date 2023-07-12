@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const people = require('./people.model.js');
 const cold = require('./cold.model.js')
-// const hot = require('./hot.model.js')
+const hot = require('./hot.model.js')
 
 // connect to database
 // URI: uniform resource identifier  L = locator
@@ -12,5 +12,6 @@ let sequelize = new Sequelize(POSTGRES_URI);
 
 module.exports={ dbInstance: sequelize,
    People: people(sequelize, DataTypes),
-   Cold: cold(sequelize, DataTypes)
+   Cold: cold(sequelize, DataTypes),
+   Hot: hot(sequelize, DataTypes)
    };
