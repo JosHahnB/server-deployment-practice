@@ -16,10 +16,6 @@ const Hot = (dbInstance, DataTypes ) =>
 
   }
 })
-// single line functions have an implied return
-// const super = () => 'super'
-// const super = () => {
-// return 'super'
-// }
+
 
 module.exports = Hot;

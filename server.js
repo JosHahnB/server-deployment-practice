@@ -8,6 +8,8 @@ const handle404 = require('./routeErrorHandlers/404.js');
 const peopleRoutes = require('./routes/people.route.js');
 const coldRoutes = require('./routes/cold.route.js');
 const hotRoutes = require('./routes/hot.route.js');
+const customerRoutes = require('./routes/customers.route.js');
+const orderRoutes = require('./routes/orders.route.js');
 
 // start function that will be used by index
 function start(port) {
@@ -25,7 +27,9 @@ server.get('/', (req, res) => res.send('Hello World'));
 
 server.use(peopleRoutes);
 server.use(coldRoutes);
-server.use(hotRoutes)
+server.use(hotRoutes);
+server.use(customerRoutes);
+server.use(orderRoutes);
 
 server.use('*', handle404);
 server.use(handle500);

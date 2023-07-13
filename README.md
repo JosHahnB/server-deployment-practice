@@ -12,3 +12,9 @@
 <!-- basic-api -->
 
 ## https://github.com/JosHahnB/server-deployment-practice/pull/4
+
+## lab 4
+
+Lacey was my partner, he has really cool modularized routes. I think we are going to talk about the modularized code soon in class, but it was neat geetting to pick his brain on how he did it. It's actually not super complicated and really seems much more sensible, so I'm excited to get to that stage.
+![pull](https://github.com/JosHahnB/server-deployment-practice/pull/6)
+![pull](https://github.com/laceywash31700/lab02-server/pull/6)
