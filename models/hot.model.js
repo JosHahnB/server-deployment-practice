@@ -6,19 +6,17 @@
 // what are datatypes
 const Hot = (dbInstance, DataTypes) =>
   dbInstance.define('Hot', {
-    name: {
-      type: DataTypes.STRING,
-      // if you want the info to be required: use allowNull
-      allowNull: false,
-    },
-    temp: {
-      type: DataTypes.STRING,
-    },
-  });
-// single line functions have an implied return
-// const super = () => 'super'
-// const super = () => {
-// return 'super'
-// }
+  name: {
+    type: DataTypes.STRING,
+    // if you want the info to be required: use allowNull
+    allowNull: false
+  },
+  temp: {
+    type: DataTypes.STRING,
+
+  }
+})
+
+
 
 module.exports = Hot;
