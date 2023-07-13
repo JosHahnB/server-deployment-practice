@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // import the stuff we need
 // express router - express
@@ -11,31 +11,31 @@ const { Cold } = require('../models/index.js');
 const router = express.Router();
 
 // RESTful route declarations
-router.get('/cold', getCold); //get all records from pepole table
+router.get('/cold', getCold); //get all records from people table
 router.get('/cold/:id', getOneCold);
 router.post('/cold', createCold);
 router.put('/cold/:id', updateCold);
 router.delete('/cold/:id', deleteCold);
 
-// routehandlers -- all are async because database
+// route handlers -- all are async because database
 async function getCold(req, res) {
   // search db and return all Cold
   let allCold = await Cold.findAll();
   res.status(200).json(allCold);
 }
-
+// 
 async function getOneCold(req, res) {
   const id = parseInt(req.params.id);
   let retrievedCold = await Cold.findOne({ where: { id: id } });
-  res.status(200).json(retrievedCold)
+  res.status(200).json(retrievedCold);
 }
 
 async function createCold(req, res) {
   let newCold = req.body;
   let savedCold = await Cold.create(newCold);
-  res.status(200).json(savedCold)
+  res.status(200).json(savedCold);
 }
-
+// I get whats going on here 
 async function updateCold(req, res) {
   const id = parseInt(req.params.id);
   const updatedColdObj = req.body;

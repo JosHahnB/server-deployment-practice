@@ -25,7 +25,7 @@ server.get('/', (req, res) => res.send('Hello World'));
 
 server.use(peopleRoutes);
 server.use(coldRoutes);
-server.use(hotRoutes)
+server.use(hotRoutes);
 
 server.use('*', handle404);
 server.use(handle500);

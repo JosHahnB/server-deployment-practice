@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // import the stuff we need
 // express router - express
@@ -10,13 +10,13 @@ const { Hot } = require('../models/index.js');
 const router = express.Router();
 
 // RESTful route declarations
-router.get('/hot', getHot); //get all records from pepole table
+router.get('/hot', getHot); //get all records from people table
 router.get('/hot/:id', getOneHot);
 router.post('/hot', createHot);
 router.put('/hot/:id', updateHot);
 router.delete('/hot/:id', deleteHot);
 
-// routehandlers -- all are async because database
+// route handlers -- all are async because database
 async function getHot(req, res) {
   // search db and return all Hot
   let allHot = await Hot.findAll();
@@ -26,13 +26,13 @@ async function getHot(req, res) {
 async function getOneHot(req, res) {
   const id = parseInt(req.params.id);
   let retrievedHot = await Hot.findOne({ where: { id: id } });
-  res.status(200).json(retrievedHot)
+  res.status(200).json(retrievedHot);
 }
 
 async function createHot(req, res) {
   let newHot = req.body;
   let savedHot = await Hot.create(newHot);
-  res.status(200).json(savedHot)
+  res.status(200).json(savedHot);
 }
 
 async function updateHot(req, res) {
