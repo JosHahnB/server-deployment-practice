@@ -1,9 +1,9 @@
-'use strict'
-
+'use strict';
+// my only critique is the semicolons so many red lines but thats only because the stupid linter file isn't working but other that amazing and keep up the good work. 
 // import the stuff we need
 // express router - express
 const express = require('express');
-const { People } = require('../models/index.js')
+const { People } = require('../models/index.js');
 // const { People } from our model index
 
 // the router method is the umbrella for all things having to do with the /people
@@ -11,13 +11,13 @@ const { People } = require('../models/index.js')
 const router = express.Router();
 
 // RESTful route declarations
-router.get('/people', getPeople); //get all records from pepole table
+router.get('/people', getPeople); //get all records from people table
 router.get('/people/:id', getOnePerson);
 router.post('/people', createPerson);
 router.put('/people/:id', updatePerson);
 router.delete('/people/:id', deletePerson);
 
-// routehandlers -- all are async because database
+// route handlers -- all are async because database
 async function getPeople(req, res) {
   // search db and return all people
   let allPeople = await People.findAll();
@@ -27,14 +27,15 @@ async function getPeople(req, res) {
 async function getOnePerson(req, res) {
   const id = parseInt(req.params.id);
   let retrievedPerson = await People.findOne({ where: { id: id } });
-  res.status(200).json(retrievedPerson)
+  res.status(200).json(retrievedPerson);
 }
 
 async function createPerson(req, res) {
   let newPerson = req.body;
   let savedPerson = await People.create(newPerson);
-  res.status(200).json(savedPerson)
+  res.status(200).json(savedPerson);
 }
+
 
 async function updatePerson(req, res) {
   const id = parseInt(req.params.id);
