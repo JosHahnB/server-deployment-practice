@@ -31,6 +31,7 @@ server.use(hotRoutes);
 server.use(customerRoutes);
 server.use(orderRoutes);
 
+
 server.use('*', handle404);
 server.use(handle500);
 
