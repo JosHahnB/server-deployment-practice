@@ -19,7 +19,7 @@ Unit Tests: npm run test
 
 
 <!-- actions -->
-## !(actions)[https://github.com/JosHahnB/server-deployment-practice/actions/runs/5433441486]
+## ![actions](https://github.com/JosHahnB/server-deployment-practice/actions/runs/5433441486)
 
 <!-- pull request -->
 ## !(pull request)[https://github.com/JosHahnB/server-deployment-practice/pull/1]
