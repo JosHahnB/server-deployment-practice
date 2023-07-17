@@ -1,13 +1,20 @@
 # Repository Name: server-deployment-practice
 
 Author: Joshua Hahn
+
 tests report
+
 domain - https://server-depoloyment-practice-qa.onrender.com
+
 .env requirements - DATABASE_URI=postgres://localhost:5432/postgres
+
 PORT - PORT=3000
+
 Running the app - npm start
 
+
 Tests
+
 Unit Tests: npm run test
 
 
