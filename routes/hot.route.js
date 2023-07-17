@@ -47,7 +47,7 @@ async function updateHot(req, res) {
 
 async function deleteHot(req, res) {
   const id = parseInt(req.params.id);
-  let deleteHot = await Hot.destroy({ where:  { id } });
+  let deleteHot = await Hot.destroy({ where: { id } });
   res.status(204).json(deleteHot);
 
 }

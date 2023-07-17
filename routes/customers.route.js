@@ -16,8 +16,8 @@ router.delete('/customers/:id', deleteCustomer);
 // route handlers
 async function getCustomers(req, res) {
   let allCustomers = await customerCollection.read(null, {
-  include: { model: orderCollection.model }
-});
+    include: { model: orderCollection.model }
+  });
   res.status(200).json(allCustomers);
 }
 
