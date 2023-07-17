@@ -19,17 +19,17 @@ Unit Tests: npm run test
 
 
 <!-- actions -->
-## https://github.com/JosHahnB/server-deployment-practice/actions/runs/5433441486
+## !(actions)[https://github.com/JosHahnB/server-deployment-practice/actions/runs/5433441486]
 
 <!-- pull request -->
-## https://github.com/JosHahnB/server-deployment-practice/pull/1
+## !(pull request)[https://github.com/JosHahnB/server-deployment-practice/pull/1]
 
 <!-- render deployment -->
-## https://server-depoloyment-practice-qa.onrender.com/
+## !(render deployment)[https://server-depoloyment-practice-qa.onrender.com/]
 
 <!-- basic-api -->
 
-## https://github.com/JosHahnB/server-deployment-practice/pull/4
+## !(basic-api)[https://github.com/JosHahnB/server-deployment-practice/pull/4]
 
 ## lab 4
 
