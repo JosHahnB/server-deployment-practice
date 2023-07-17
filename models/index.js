@@ -4,8 +4,8 @@ const people = require('./people.model.js');
 const cold = require('./cold.model.js')
 const hot = require('./hot.model.js');
 const Collection = require('./collection.js');
-// const customer = require
-// const order = require
+const customer = require('./customer.model.js');
+const order = require('./order.model.js');
 
 
 // connect to database
